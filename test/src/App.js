@@ -1,8 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Axios from 'axios';
 
 function App() {
+  function click(){
+    Axios.get('http://127.0.0.1:5000/user').then(function(res){
+      console.log(res);
+      alert(res.data.user.age);
+    }).catch(function(e){
+      alert(e);
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +27,12 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+
+          <br/>
+
         </a>
+        <button onClick={() => {click()}}>click</button>
+
       </header>
     </div>
   );
